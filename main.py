@@ -13,3 +13,5 @@ print(totp.now())
 input_code = input("Enter 2FA Code:")
 
 totp.verify(input_code)
+
+print(totp.verify(input_code))
