@@ -3,15 +3,10 @@ import pyotp
 
 key = "SuperSecretKey"
 
-totp = pyotp.TOTP(key)
-print(totp.now())
+counter  = 0
 
-time.sleep(30)
+hotp = pyotp.HOTP(key)
 
-print(totp.now())
-
-input_code = input("Enter 2FA Code:")
-
-totp.verify(input_code)
-
-print(totp.verify(input_code))
+for _ in range(5):
+    print(hotp.verify(input("Enter Code:"), counter))
+    counter += 1
